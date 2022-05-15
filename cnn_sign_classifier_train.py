@@ -78,13 +78,13 @@ def batch_training(model, batch_size, epoch):
     batch_x, batch_y = get_dataset_batch(batch_size, "train")
     batch_x_test, batch_y_test = get_dataset_batch(400, "test")
     print('Training model on:', len(batch_x), 'cases...')
-    history = model.fit(batch_x, batch_y, batch_size=150, epochs=epoch, validation_data=(batch_x_test, batch_y_test))
+    history = model.fit(batch_x, batch_y, batch_size=75, epochs=epoch, validation_data=(batch_x_test, batch_y_test))
     return history.history['accuracy'], history.history['loss'], history.history['val_accuracy']
 
 
 def train():
-    EPOCH = 4
-    BATCH_SIZE = 150 * 10
+    EPOCH = 5
+    BATCH_SIZE = 75 * 15
     NUMBER_OF_BATCH = 5
 
     model = get_model()
