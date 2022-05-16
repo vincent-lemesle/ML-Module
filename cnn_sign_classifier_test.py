@@ -47,7 +47,7 @@ while rval:
                     y_max = y
                 if y < y_min:
                     y_min = y
-            cv2.rectangle(frame, (x_min - 50, y_min - 50), (x_max + 50, y_max + 50), (0, 255, 0), 2)
+        cv2.rectangle(frame, (x_min - 50, y_min - 50), (x_max + 50, y_max + 50), (0, 255, 0), 2)
 
     if x_min > 50 and x_max != 0 and y_min > 50 and y_max != 0:
         x_max = x_min + (y_max - y_min)
