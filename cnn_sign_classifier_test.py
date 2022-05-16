@@ -63,7 +63,7 @@ while rval:
         ar = np.array(resize_image)
         prediction = model.predict([np.array(resize_image).tolist()])
         pred_char = chr(np.argmax(prediction) + 65)
-        cv2.putText(frame, pred_char, (x_max - x_min, y_min - 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0))
+        cv2.putText(frame, 'Letter: ' + pred_char, (x_min, y_min - 100), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0))
 
     key = cv2.waitKey(20)
     if key == 27: # exit on ESC
