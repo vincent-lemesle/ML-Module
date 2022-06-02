@@ -25,10 +25,11 @@ def get_model():
     model.add(layers.MaxPooling2D((2, 2)))
     model.add(layers.Conv2D(48, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))
-    model.add(layers.Conv2D(48, (3, 3), activation='relu'))
+    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+    model.add(layers.MaxPooling2D((2, 2)))
 
     model.add(layers.Flatten())
-    model.add(layers.Dense(64, activation='relu'))
+    model.add(layers.Dense(96, activation='relu'))
     model.add(layers.Dense(26))
 
     # display current neural net architecture
@@ -53,16 +54,16 @@ def get_dataset_batch(batch_size, dataset):
 def batch_training(model, batch_size, epoch):
     # batch training
     batch_x, batch_y = get_dataset_batch(batch_size, "train")
-    batch_x_test, batch_y_test = get_dataset_batch(400, "test")
+    batch_x_test, batch_y_test = get_dataset_batch(800, "test")
     print('Training model on:', len(batch_x), 'cases...')
-    history = model.fit(batch_x, batch_y, batch_size=500, epochs=epoch, validation_data=(batch_x_test, batch_y_test))
+    history = model.fit(batch_x, batch_y, batch_size=200, epochs=epoch, validation_data=(batch_x_test, batch_y_test))
     return history.history['accuracy'], history.history['loss'], history.history['val_accuracy']
 
 
 def train():
-    EPOCH = 3
-    BATCH_SIZE = 500 * 10
-    NUMBER_OF_BATCH = 10
+    EPOCH = 2
+    BATCH_SIZE = 1000 * 10
+    NUMBER_OF_BATCH = 4
 
     model = get_model()
     accuracy, loss, val_accuracy = [], [], []
@@ -96,7 +97,7 @@ def train():
     is_save = input('Do you want to save the model [Y/n]: ')
     if is_save == 'Y':
         print('Saving model...')
-        model.save('./model')
+        model.save('./model2')
         print('Model saved')
 
 if len(sys.argv) == 1:
