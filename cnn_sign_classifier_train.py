@@ -60,9 +60,9 @@ def batch_training(model, batch_size, epoch):
 
 
 def train():
-    EPOCH = 5
+    EPOCH = 3
     BATCH_SIZE = 500 * 10
-    NUMBER_OF_BATCH = 5
+    NUMBER_OF_BATCH = 10
 
     model = get_model()
     accuracy, loss, val_accuracy = [], [], []
